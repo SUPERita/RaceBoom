@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c840479070ce0b945abbfe69abecbd5a, type: 3}
-  m_Name: Attack3State
+  m_Script: {fileID: 11500000, guid: ccfdde26828fa3942b604f707c51c7dc, type: 3}
+  m_Name: GameEventManager_1
   m_EditorClassIdentifier: 
-  <stateName>k__BackingField: Attack3
-  <priotiry>k__BackingField: 1
-  <blocksSliding>k__BackingField: 1
-  <blocksJumping>k__BackingField: 1
-  <blocksRolling>k__BackingField: 1
-  endTime: 0.5

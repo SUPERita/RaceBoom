@@ -7,7 +7,9 @@ public class PlayerState : State
 {
     protected PlayerMovement playerMovement = null;
     protected float timeFromStart = 0f;
-
+    [field: SerializeField] public bool blocksSliding { get; private set; } = false;
+    [field: SerializeField] public bool blocksJumping { get; private set; } = false;
+    [field:SerializeField] public bool blocksRolling { get; private set; } = false;
     public override void OnEnter(GameObject _g)
     {
         timeFromStart = 0f;

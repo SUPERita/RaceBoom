@@ -5,11 +5,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MoreMountains.Feedbacks;
-
+using UnityEditor;
 
 public class PlayerMovement : MonoBehaviour
 {
-
+    [FoldoutGroup("Attacking")]
+    [SerializeField] private Vector3 attackCorrectionSlide = Vector3.back;
+    [FoldoutGroup("Attacking")]
+    [SerializeField] private float attackCorrectionDur = .1f;
     [FoldoutGroup("Jumping")]
     [SerializeField] private LayerMask groundLayer;
     [FoldoutGroup("Jumping")]
@@ -21,12 +24,12 @@ public class PlayerMovement : MonoBehaviour
     [FoldoutGroup("Jumping")]
     [SerializeField] private float jumpForce = 7f;
 
+    [FoldoutGroup("Moving")]
     [SerializeField] private float speed = 5f;
+    [FoldoutGroup("Moving")]
     [SerializeField] private float moveDistance = 1f;
+    [FoldoutGroup("Moving")]
     [SerializeField] private float moveDur = .25f;
-    //[SerializeField] private Vector3 moveDirection = Vector3.forward;
-    private bool inputLock = false;
-    private bool isGrounded = true;
     
     [FoldoutGroup("Params")]
     [SerializeField] private Transform feetTransform = null;
@@ -37,6 +40,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private DestructibleChecker destructibleChecker = null;
     [FoldoutGroup("Params")]
     [SerializeField] private Joystick joystick = null;
+    [FoldoutGroup("Params")]
+    [SerializeField] private GameEventManager gameEventManager = null;
+    [FoldoutGroup("Params")]
+    [SerializeField] private Transform spawnPoint = null;
+    //-1 1
+    private int currentLane = 0;
+    //[SerializeField] private Vector3 moveDirection = Vector3.forward;
+    private bool inputLock = false;
+    private bool isGrounded = true;
+    private bool isAlive = true;
 
     [Button]
     private void Editor_CacheParams()
@@ -45,6 +58,10 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         joystick = GameObject.FindObjectOfType<Joystick>();
         destructibleChecker = GetComponentInChildren<DestructibleChecker>();
+        //no connection to the resources folder, i think
+        gameEventManager = Resources.FindObjectsOfTypeAll<GameEventManager>()[0];
+        
+        
         Debug.Log("params cached");
     }
 
@@ -54,18 +71,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerState[] states = null;
     private PlayerState currentState = null;
 
-    private void Start()
-    {
-        destructibleChecker.OnTriggerDestructible += DestructibleChecker_OnTriggerDestructible;
-        //Debug.Log("need a better way to get isGrounded"); // DONE V
-        SetState(states[0]);
-
-        
-    }
     private void OnDisable()
     {
         destructibleChecker.OnTriggerDestructible -= DestructibleChecker_OnTriggerDestructible;
+        gameEventManager.OnGameStart -= GameEventManager_OnGameStart;
     }
+    private void Start()
+    {
+        destructibleChecker.OnTriggerDestructible += DestructibleChecker_OnTriggerDestructible;
+        gameEventManager.OnGameStart += GameEventManager_OnGameStart;
+        //Debug.Log("need a better way to get isGrounded"); // DONE V
+        SetState("Idle");
+
+        
+    }
+
 
     private void Update()
     {
@@ -78,78 +98,42 @@ public class PlayerMovement : MonoBehaviour
         currentState.OnUpdate();
     }
 
-
-    #region events
-
-    private void DestructibleChecker_OnTriggerDestructible(Destructible obj)
-    {
-        SetState("Attack" + UnityEngine.Random.Range(1, 4));
-        destructiblesInCheck.Add(obj);
-    }
-    private List<Destructible> destructiblesInCheck = new List<Destructible>();
-    public void Anim_DestroyDestructiblesInTrigger()
-    {
-        if(destructiblesInCheck.Count > 0)
-        {
-            KickFeedback?.PlayFeedbacks();
-        }
-        foreach (Destructible _d in destructiblesInCheck)
-        {
-            _d.Destruct();
-        }
-        destructiblesInCheck = new List<Destructible>();
-    }
-
-    #endregion
-
-
-
-
-    /*
-    RaycastHit rInfo;
-    private void SetIsGrounded()
-    {
-        isGrounded = Physics.Raycast(feetTransform.position, Vector3.down,out rInfo, groundCheckRadius, groundLayer);
-        //Debug.Log(rInfo.collider.name);
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(feetTransform.position, groundCheckRadius);
-    }
-    */
-
     private void StateDecider()
     {
         //slide
-        if (!inputLock && Mathf.Abs(joystick.Horizontal) > .75f)
+        if (!inputLock && Mathf.Abs(joystick.Horizontal) > .75f &&
+            !currentState.blocksSliding)
         {
-            transform.DOMoveX(transform.position.x + (Mathf.Sign(joystick.Horizontal)) * moveDistance, moveDur).SetEase(Ease.OutCubic);
+            if (joystick.Horizontal > 0) { currentLane++; }
+            else { currentLane--; }
+            currentLane = Mathf.Clamp(currentLane, -1, 1);
+
+            transform.DOMoveX(/*transform.position.x + (Mathf.Sign(joystick.Horizontal))*/currentLane * moveDistance, moveDur).SetEase(Ease.OutCubic);
             inputLock = true;
         }
         if (!inputLock && Mathf.Abs(joystick.Vertical) > .75f)
         {
             //jump
-            if (joystick.Vertical > 0 && isGrounded)
+            if (joystick.Vertical > 0 && isGrounded && !currentState.blocksJumping)
             {
                 _velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
                 inputLock = true;
             }
             //roll
-            else if (joystick.Vertical < 0 && !isGrounded)
+            else if (joystick.Vertical < 0 && !isGrounded && !currentState.blocksRolling)
             {
                 _velocity.y = gravity;
                 inputLock = true;
             }
         }
-        
 
 
-        if (Input.GetKeyDown(KeyCode.Space)) { SetState("Attack" + UnityEngine.Random.Range(1,4));  }
+
+        if (Input.GetKeyDown(KeyCode.Space)) { SetState("Attack" + UnityEngine.Random.Range(1, 4)); }
         if (isGrounded) { SetState("Run"); }
         if (_velocity.y > 0 && !isGrounded) { SetState("Jump"); }
         if (_velocity.y < 0 && !isGrounded) { SetState("Fall"); }
     }
-
     private Vector3 _velocity = Vector3.zero;
     public void Gravity()
     {
@@ -165,12 +149,82 @@ public class PlayerMovement : MonoBehaviour
         //ravityOut *= Time.deltaTime;
 
         _velocity.y += gravity * Time.deltaTime;
-        controller.Move(_velocity * Time.deltaTime);
+        if(controller.enabled) { controller.Move(_velocity * Time.deltaTime); }
+        
     }
-    public void ResetGravity()
+    private void PlayerDie()
     {
-        _velocity.y = 0f;
+        transform.DOKill();
+        controller.enabled = false;
+        isAlive = false;
+        SetState("Die");
+        gameEventManager.Notify_OnGameOver();
     }
+    private void RestartPlayer()
+    {
+        //transform.DOKill();
+        Debug.Log("restarted");
+        isAlive = true;
+        SetState("Run", true);
+            controller.enabled = false;
+        //transform.localPosition = spawnPoint.transform.localPosition;//cant move player when controler is active
+            controller.enabled = true;
+        //gameEventManager.Notify_OnGameOver();
+    }
+
+    #region events
+
+    private void DestructibleChecker_OnTriggerDestructible(Destructible obj)
+    {
+        SetState("Attack" + UnityEngine.Random.Range(1, 4));
+        destructiblesInCheck.Add(obj);
+        transform.DOMove(destructiblesInCheck[0].transform.position + attackCorrectionSlide, attackCorrectionDur);
+    }
+    private List<Destructible> destructiblesInCheck = new List<Destructible>();
+    public void Anim_DestroyDestructiblesInTrigger()
+    {
+        if(destructiblesInCheck.Count > 0)
+        {
+            KickFeedback?.PlayFeedbacks();
+        }
+        foreach (Destructible _d in destructiblesInCheck)
+        {
+            _d.Destruct();
+        }
+        destructiblesInCheck = new List<Destructible>();
+    }
+
+    private void GameEventManager_OnGameStart()
+    {
+        RestartPlayer();
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        //Debug.Log("one");
+        if (hit.collider.gameObject.CompareTag("Obstacle"))
+        {
+            //Debug.Log("one2" +   hit.collider.gameObject.name);
+            PlayerDie();
+        }
+    }
+
+    
+
+    #endregion
+
+    /*
+    RaycastHit rInfo;
+    private void SetIsGrounded()
+    {
+        isGrounded = Physics.Raycast(feetTransform.position, Vector3.down,out rInfo, groundCheckRadius, groundLayer);
+        //Debug.Log(rInfo.collider.name);
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(feetTransform.position, groundCheckRadius);
+    }
+    */
 
     #region utils
 
@@ -216,10 +270,13 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("didnt find state named "+ _arg);
         return null;
     }
-
     public void ResetPlayerState()
     {
         SetState("Run", true);
+    }
+    public void ResetGravity()
+    {
+        _velocity.y = 0f;
     }
     /*
     public void ResetStateLock()
@@ -234,7 +291,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #endregion
-
     
     private void Editor_PlayerAnim()
     {

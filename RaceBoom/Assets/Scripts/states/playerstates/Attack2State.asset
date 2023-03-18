@@ -14,4 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <stateName>k__BackingField: Attack2
   <priotiry>k__BackingField: 1
+  <blocksSliding>k__BackingField: 1
+  <blocksJumping>k__BackingField: 1
+  <blocksRolling>k__BackingField: 1
   endTime: 0.75
