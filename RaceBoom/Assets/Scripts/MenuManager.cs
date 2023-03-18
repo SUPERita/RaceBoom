@@ -101,6 +101,7 @@ public class MenuManager : SerializedMonoBehaviour
         //OpenMenu("Title");
         //OpenMenu("MainMenu");
         Debug.Log("reload scene?!");
+        DOTween.Clear(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
     }

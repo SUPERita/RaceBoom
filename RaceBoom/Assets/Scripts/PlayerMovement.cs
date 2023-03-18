@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     [FoldoutGroup("Moving")]
     [SerializeField] private float moveDistance = 1f;
     [FoldoutGroup("Moving")]
-    [SerializeField] private float moveDur = .25f;
+    [SerializeField] private float slideSpeed = .25f;
     
     [FoldoutGroup("Params")]
     [SerializeField] private Transform feetTransform = null;
@@ -108,7 +108,9 @@ public class PlayerMovement : MonoBehaviour
             else { currentLane--; }
             currentLane = Mathf.Clamp(currentLane, -1, 1);
 
-            transform.DOMoveX(/*transform.position.x + (Mathf.Sign(joystick.Horizontal))*/currentLane * moveDistance, moveDur).SetEase(Ease.OutCubic);
+            //Debug.Log(currentLane * moveDistance + " -- " + moveDur);
+            //StartCoroutine(SlideTo(currentLane * moveDistance));
+            transform.DOMoveX(/*transform.position.x + (Mathf.Sign(joystick.Horizontal))*/currentLane *5,slideSpeed).SetEase(Ease.OutCubic);
             inputLock = true;
         }
         if (!inputLock && Mathf.Abs(joystick.Vertical) > .75f)
@@ -152,6 +154,21 @@ public class PlayerMovement : MonoBehaviour
         if(controller.enabled) { controller.Move(_velocity * Time.deltaTime); }
         
     }
+    /*
+    Vector3 slideVector = Vector3.zero;
+    public IEnumerator SlideTo(float _toPos)
+    {
+        StopCoroutine(nameof(SlideTo));
+        slideVector.x = _toPos;
+        //slideVector.y = transform.position.y;
+        //slideVector.z = transform.position.z;
+        while (Mathf.Abs(transform.position.x-_toPos) > .1f)
+        {
+            controller.SimpleMove((slideVector).normalized*slideSpeed);
+            yield return new WaitForEndOfFrame();
+        }
+    }
+    */
     private void PlayerDie()
     {
         transform.DOKill();
@@ -185,6 +202,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(destructiblesInCheck.Count > 0)
         {
+            gameEventManager.Notify_OnDestructibleDestroyed();
             KickFeedback?.PlayFeedbacks();
         }
         foreach (Destructible _d in destructiblesInCheck)

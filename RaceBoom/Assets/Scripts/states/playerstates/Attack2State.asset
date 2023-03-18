@@ -17,4 +17,4 @@ MonoBehaviour:
   <blocksSliding>k__BackingField: 1
   <blocksJumping>k__BackingField: 1
   <blocksRolling>k__BackingField: 1
-  endTime: 0.75
+  endTime: 0.8
