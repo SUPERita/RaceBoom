@@ -26,7 +26,6 @@ namespace TMPro.Examples
             StartCoroutine(WarpText());
         }
 
-
         private AnimationCurve CopyAnimationCurve(AnimationCurve curve)
         {
             AnimationCurve newCurve = new AnimationCurve();

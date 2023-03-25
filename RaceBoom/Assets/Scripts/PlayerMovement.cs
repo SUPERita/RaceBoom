@@ -208,6 +208,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (Destructible _d in destructiblesInCheck)
         {
             _d.Destruct();
+            ResourceManager.AddCoins(10);
         }
         destructiblesInCheck = new List<Destructible>();
     }

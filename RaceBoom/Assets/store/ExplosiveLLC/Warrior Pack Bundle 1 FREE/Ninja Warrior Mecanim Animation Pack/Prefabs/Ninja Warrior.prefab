@@ -93,16 +93,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementAcceleration: 90
-  walkSpeed: 4.5
   runSpeed: 9
   groundFriction: 50
   currentVelocity: {x: 0, y: 0, z: 0}
-  crouch: 0
-  dropping: 0
   gravity: 25
   jumpAcceleration: 5
   jumpHeight: 3
-  doubleJumpHeight: 6
   inAirSpeed: 6
 --- !u!114 &5724214510226308551
 MonoBehaviour:
@@ -136,7 +132,7 @@ MonoBehaviour:
     isHead: 1
   Walkable:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   ownCollider: {fileID: 5724214510226308569}
   radius: 0.6
 --- !u!54 &5724214510226308570
@@ -192,9 +188,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8203889226637907145}
     m_Modifications:
+    - target: {fileID: -884965211200311117, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97e5db5a0e4821a46b0efc57d7308489, type: 2}
     - target: {fileID: 100106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
       propertyPath: m_Name
       value: Ninja
+      objectReference: {fileID: 0}
+    - target: {fileID: 400106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -209,6 +213,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -218,14 +226,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
@@ -244,13 +244,7 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2bde4631b80eb5648bfd89479fb7c998, type: 2}
-    - target: {fileID: -884965211200311117, guid: 24bdb7cc7a8d8a745a84df6c531bc19d,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 97e5db5a0e4821a46b0efc57d7308489, type: 2}
-    - target: {fileID: 6974645304312056032, guid: 24bdb7cc7a8d8a745a84df6c531bc19d,
-        type: 3}
+    - target: {fileID: 6974645304312056032, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 97e5db5a0e4821a46b0efc57d7308489, type: 2}
@@ -258,13 +252,11 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
 --- !u!4 &2515539181837597072 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 400106, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
   m_PrefabInstance: {fileID: 2515539181837984634}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4816111113971781968 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6935189401846608426, guid: 24bdb7cc7a8d8a745a84df6c531bc19d,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 6935189401846608426, guid: 24bdb7cc7a8d8a745a84df6c531bc19d, type: 3}
   m_PrefabInstance: {fileID: 2515539181837984634}
   m_PrefabAsset: {fileID: 0}

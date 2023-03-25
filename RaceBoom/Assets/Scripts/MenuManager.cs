@@ -25,10 +25,14 @@ public class MenuManager : SerializedMonoBehaviour
     private void Start()
     {
         CloseAllMenus();
+        OpenStartMenus();
+    }
+
+    private void OpenStartMenus()
+    {
         OpenMenu("Title");
         OpenMenu("MainMenu");
     }
-
 
     public void CloseAllMenus()
     {
@@ -108,6 +112,17 @@ public class MenuManager : SerializedMonoBehaviour
     public void Button_Start()
     {
         gameEventManager.Notify_OnGameStart();
+    }
+    public void Button_Shop()
+    {
+        CloseAllMenus();
+        OpenMenu("Shop");
+
+    }
+    public void Button_ShopReturn()
+    {
+        CloseAllMenus();
+        OpenStartMenus();
 
     }
 
