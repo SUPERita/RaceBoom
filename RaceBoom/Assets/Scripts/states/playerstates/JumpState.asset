@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: JumpState
   m_EditorClassIdentifier: 
   <stateName>k__BackingField: Jump
-  <priotiry>k__BackingField: 0
+  <priotiry>k__BackingField: 1
+  <blocksSliding>k__BackingField: 0
+  <blocksJumping>k__BackingField: 0
+  <blocksRolling>k__BackingField: 0

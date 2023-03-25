@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Vector3 attackCorrectionSlide = Vector3.back;
     [FoldoutGroup("Attacking")]
     [SerializeField] private float attackCorrectionDur = .1f;
+
     [FoldoutGroup("Jumping")]
     [SerializeField] private LayerMask groundLayer;
     [FoldoutGroup("Jumping")]
@@ -30,7 +31,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveDistance = 1f;
     [FoldoutGroup("Moving")]
     [SerializeField] private float slideSpeed = .25f;
-    
+
+    [FoldoutGroup("Rolling")]
+    [SerializeField] private float rollSpeed = 1f;
+    [FoldoutGroup("Rolling")]
+    [SerializeField] private float rolldur = 1f;
+    [FoldoutGroup("Rolling")]
+    [SerializeField] private float rollHeightChange = .5f;
+    [FoldoutGroup("Rolling")]
+    [SerializeField] private float rollCenterChange = .5f;
+    private float startHeight = 1f;
+    private float startCenter = 1f;
+
+
     [FoldoutGroup("Params")]
     [SerializeField] private Transform feetTransform = null;
     [FoldoutGroup("Params")]
@@ -83,7 +96,8 @@ public class PlayerMovement : MonoBehaviour
         //Debug.Log("need a better way to get isGrounded"); // DONE V
         SetState("Idle");
 
-        
+        startHeight = controller.height;
+        startCenter = controller.center.y;
     }
 
 
@@ -98,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
         currentState.OnUpdate();
     }
 
+    private bool rollRequest = false;
     private void StateDecider()
     {
         //slide
@@ -121,20 +136,26 @@ public class PlayerMovement : MonoBehaviour
                 _velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
                 inputLock = true;
             }
-            //roll
+            //drop
             else if (joystick.Vertical < 0 && !isGrounded && !currentState.blocksRolling)
             {
                 _velocity.y = gravity;
                 inputLock = true;
+                rollRequest = true;
+            } else if (joystick.Vertical < 0 && isGrounded && !currentState.blocksRolling)
+            {
+                SetState("Roll");
             }
         }
 
 
-
+        if(rollRequest && isGrounded) { SetState("Roll"); rollRequest = false; }
         if (Input.GetKeyDown(KeyCode.Space)) { SetState("Attack" + UnityEngine.Random.Range(1, 4)); }
         if (isGrounded) { SetState("Run"); }
         if (_velocity.y > 0 && !isGrounded) { SetState("Jump"); }
         if (_velocity.y < 0 && !isGrounded) { SetState("Fall"); }
+        //
+        if(currentState.stateName == "Jump" && _velocity.y < 0 && !isGrounded) { SetState("Fall", true); }
     }
     private Vector3 _velocity = Vector3.zero;
     public void Gravity()
@@ -307,6 +328,20 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.Raycast(feetTransform.position, Vector3.down, groundCheckRadius, groundLayer);
         //isGrounded = controller.isGrounded;
+    }
+    public void PlayerHitBoxShorten(bool reset = false)
+    {
+        if (reset)
+        {
+            controller.height = startHeight;
+            controller.center = startCenter * Vector3.up;
+            return;
+        } else
+        {
+            controller.height = rollHeightChange;
+            controller.center = rollCenterChange * Vector3.up;
+        }
+        
     }
 
     #endregion

@@ -1544,7 +1544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 163.56259, y: -50.794006}
+  m_AnchoredPosition: {x: 163.56262, y: -50.794067}
   m_SizeDelta: {x: 264.0251, y: 40.1879}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &543150699
@@ -4494,7 +4494,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470119527}
-  m_LocalRotation: {x: 0.040756024, y: -0.12904124, z: 0.0053081107, w: 0.99078715}
+  m_LocalRotation: {x: 0.040756006, y: -0.12904121, z: 0.0053081065, w: 0.99078715}
   m_LocalPosition: {x: 1.66, y: 7.83, z: -4.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5354,7 +5354,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
-  m_LocalRotation: {x: 0.040756024, y: -0.12904124, z: 0.0053081107, w: 0.99078715}
+  m_LocalRotation: {x: 0.040756006, y: -0.12904121, z: 0.0053081065, w: 0.99078715}
   m_LocalPosition: {x: 1.66, y: 7.83, z: -4.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5846,11 +5846,15 @@ MonoBehaviour:
     m_Bits: 1
   groundCheckRadius: 0.2
   groundCheckPoint: {fileID: 1204724386}
-  gravity: -39.24
+  gravity: -40
   jumpForce: 10
   speed: 15
   moveDistance: 5
   slideSpeed: 0.5
+  rollSpeed: 1
+  rolldur: 1
+  rollHeightChange: 0.69
+  rollCenterChange: 0.36
   feetTransform: {fileID: 1204724386}
   <anim>k__BackingField: {fileID: 1808535191}
   <controller>k__BackingField: {fileID: 1808535190}
@@ -5868,6 +5872,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86ffe56724fcaf6499d1511f144c1b6e, type: 2}
   - {fileID: 11400000, guid: b5ba4b661fac4044494cd19f08305f84, type: 2}
   - {fileID: 11400000, guid: 57badae4cb590a544a52575f861fb243, type: 2}
+  - {fileID: 11400000, guid: 2ef94ba4970f5734699d0e9190eaf484, type: 2}
 --- !u!143 &1808535190
 CharacterController:
   m_ObjectHideFlags: 0
@@ -5879,13 +5884,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.68
-  m_Radius: 0.5
+  m_Height: 1.75
+  m_Radius: 0.41
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.75, z: 0}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!95 &1808535191
 Animator:
   serializedVersion: 3

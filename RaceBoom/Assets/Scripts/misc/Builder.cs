@@ -32,14 +32,23 @@ public class Builder : MonoBehaviour
         GameObject _randomPart = parts[UnityEngine.Random.Range(0, parts.Length)];
         GameObject _tmp = Instantiate(_randomPart, Vector3.forward * count*partDistance, Quaternion.identity);
         Transform[] _children = _tmp.GetComponentsInChildren<Transform>();
+
+        Vector3 _startPos = _tmp.transform.localPosition;
+        _tmp.transform.localPosition = _startPos - (Vector3.up * fadeFromDistance);
+        _tmp.transform.DOLocalMove(_startPos, fadeTime).SetEase(fadeEase);
+        /*
         int _subTransformCount = 0;
         foreach(Transform _t in _children)
         {
             Vector3 _startPos = _t.localPosition;
             _t.localPosition = _startPos - (Vector3.up * fadeFromDistance);
-            _t.DOLocalMove(_startPos, fadeTime + (_subTransformCount/(10*fadeTime))).SetEase(fadeEase);
+            _t.DOLocalMove(_startPos, fadeTime 
+                + _t.childCount < 3 ? (_subTransformCount/(10*fadeTime)) : 0
+                ).SetEase(fadeEase);
 
             _subTransformCount++;
+            if(_subTransformCount > 3) { _subTransformCount = 0; }
         }
+        */
     }
 }
