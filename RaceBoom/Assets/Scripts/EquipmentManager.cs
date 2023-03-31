@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 public class EquipmentManager : MonoBehaviour
 {
     [SerializeField] private Transform headSocket = null;
+    [SerializeField] private Transform skinSocket = null;
     //[SerializeField] private Dictionary<string, GameObject> items = new Dictionary<string, GameObject>();
 
 
@@ -25,7 +26,22 @@ public class EquipmentManager : MonoBehaviour
     }
     private void ShopManager_OnChooseItem(GameObject obj)
     {
-        SetHeadEquipment(obj);
+        if(obj == null) {
+            //"reset the sockets"
+            //SetEquipment(obj, skinSocket);
+            SetEquipment(obj, headSocket);
+            return; 
+        }
+        switch (obj.GetComponent<Cosmetic>().cosmeticType)
+        {
+            case (Cosmetic.CosmeticType.Hat):
+                SetEquipment(obj, headSocket);
+                break;
+            case (Cosmetic.CosmeticType.Skin):
+                SetEquipment(obj, skinSocket);
+                break;
+        }
+
         /*
         if (items.TryGetValue(obj, out GameObject _out))
         {
@@ -38,15 +54,15 @@ public class EquipmentManager : MonoBehaviour
         */
     }
 
-    public void SetHeadEquipment(GameObject _object)
+    public void SetEquipment(GameObject _object, Transform _socket)
     {
-        foreach (Transform child in headSocket)
+        foreach (Transform child in _socket)
         {
             Destroy(child.gameObject);
         }
         if (_object)
         {
-            Instantiate(_object, headSocket);
+            Instantiate(_object, _socket);
         }
     }
 }
