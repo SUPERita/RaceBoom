@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 //[CreateAssetMenu(fileName = "BaseState", menuName = "State/Base")]
 public class PlayerState : State
@@ -10,14 +11,37 @@ public class PlayerState : State
     [field: SerializeField] public bool blocksSliding { get; private set; } = false;
     [field: SerializeField] public bool blocksJumping { get; private set; } = false;
     [field:SerializeField] public bool blocksRolling { get; private set; } = false;
+
+    [SerializeField] private bool hasEffects = false;
+    [LabelWidth(100)]
+    [HorizontalGroup("a")]
+    [ShowIf("hasEffects")]
+    [SerializeField] private GameObject effectOnEnter = null;
+    [LabelWidth(40)]
+    [LabelText("height")]
+    [HorizontalGroup("a")]
+    [ShowIf("hasEffects")]
+    [SerializeField] private float effectOnEnterHeight = 0f;
+    [LabelWidth(100)]
+    [HorizontalGroup("b")]
+    [ShowIf("hasEffects")]
+    [SerializeField] private GameObject effectOnExit = null;
+    [LabelWidth(40)]
+    [LabelText("height")]
+    [HorizontalGroup("b")]
+    [ShowIf("hasEffects")]
+    [SerializeField] private float effectOnExitHeight = 0f;
+
     public override void OnEnter(GameObject _g)
     {
         timeFromStart = 0f;
         playerMovement = _g.GetComponent<PlayerMovement>();
+        if (effectOnEnter) Instantiate(effectOnEnter, _g.transform.position + Vector3.up * effectOnEnterHeight, _g.transform.rotation);
+
     }
     public override void OnExit()
     {
-        
+        if (effectOnExit) Instantiate(effectOnExit, playerMovement.transform.position + Vector3.up * effectOnExitHeight, playerMovement.transform.rotation);
     }
     public override void OnUpdate()
     {

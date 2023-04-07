@@ -16,7 +16,9 @@ public class Projectile : MonoBehaviour
 
     private void DestructionProcess()
     {
-        transform.DOScale(Vector3.zero, .2f).OnComplete(
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        GetComponent<Collider>().enabled = false;
+        transform.DOScale(Vector3.zero, .1f).OnComplete(
             ()=> { Destroy(gameObject); });
             
        

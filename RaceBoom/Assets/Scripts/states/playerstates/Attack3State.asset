@@ -17,4 +17,9 @@ MonoBehaviour:
   <blocksSliding>k__BackingField: 1
   <blocksJumping>k__BackingField: 1
   <blocksRolling>k__BackingField: 1
+  hasEffects: 0
+  effectOnEnter: {fileID: 0}
+  effectOnEnterHeight: 0
+  effectOnExit: {fileID: 0}
+  effectOnExitHeight: 0
   endTime: 0.5

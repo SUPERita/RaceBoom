@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "JumpState", menuName = "States/PlayerStates/Jump")]
-public class JumpPlayerState : PlayerState
+[CreateAssetMenu(fileName = "RunState", menuName = "States/PlayerStates/Run")]
+public class RunPlayerState : PlayerState
 {
     
     public override void OnEnter(GameObject _g)

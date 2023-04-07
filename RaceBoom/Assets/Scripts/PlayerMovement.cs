@@ -57,6 +57,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameEventManager gameEventManager = null;
     [FoldoutGroup("Params")]
     [SerializeField] private Transform spawnPoint = null;
+    [FoldoutGroup("Params")]
+    [SerializeField] private HighscoreDisplay highscoreDisplay = null;
+
     //-1 1
     private int currentLane = 0;
     //[SerializeField] private Vector3 moveDirection = Vector3.forward;
@@ -73,8 +76,9 @@ public class PlayerMovement : MonoBehaviour
         destructibleChecker = GetComponentInChildren<DestructibleChecker>();
         //no connection to the resources folder, i think
         gameEventManager = Resources.FindObjectsOfTypeAll<GameEventManager>()[0];
-        
-        
+        highscoreDisplay = FindObjectsOfType<HighscoreDisplay>()[0];
+
+
         Debug.Log("params cached");
     }
 
@@ -110,13 +114,16 @@ public class PlayerMovement : MonoBehaviour
 
         //Gravity(); now from inside states
         currentState.OnUpdate();
+
+        //update score
+        highscoreDisplay.UpdateDisplay(transform.position.z*2f);
     }
 
     private bool rollRequest = false;
     private void StateDecider()
     {
         //slide
-        if (!inputLock && Mathf.Abs(joystick.Horizontal) > .75f &&
+        if (!inputLock && Mathf.Abs(joystick.Horizontal) > .5f &&
             !currentState.blocksSliding)
         {
             if (joystick.Horizontal > 0) { currentLane++; }
@@ -128,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
             transform.DOMoveX(/*transform.position.x + (Mathf.Sign(joystick.Horizontal))*/currentLane *5,slideSpeed).SetEase(Ease.OutCubic);
             inputLock = true;
         }
-        if (!inputLock && Mathf.Abs(joystick.Vertical) > .75f)
+        if (!inputLock && Mathf.Abs(joystick.Vertical) > .5f)
         {
             //jump
             if (joystick.Vertical > 0 && isGrounded && !currentState.blocksJumping)
@@ -191,9 +198,9 @@ public class PlayerMovement : MonoBehaviour
     }
     */
     private void PlayerDie()
-    {
+    { 
         transform.DOKill();
-        controller.enabled = false;
+        //controller.enabled = false;
         isAlive = false;
         SetState("Die");
         gameEventManager.Notify_OnGameOver();
@@ -225,11 +232,14 @@ public class PlayerMovement : MonoBehaviour
         {
             gameEventManager.Notify_OnDestructibleDestroyed();
             KickFeedback?.PlayFeedbacks();
+            SoundPool.instance.PlaySound("break");
+            
         }
         foreach (Destructible _d in destructiblesInCheck)
         {
             _d.Destruct();
             ResourceManager.AddCoins(10);
+            MessageManager.instance.SendMessage("+10$");
         }
         destructiblesInCheck = new List<Destructible>();
     }
