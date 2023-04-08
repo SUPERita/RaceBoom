@@ -11,6 +11,8 @@ public class GameEventManager : ScriptableObject
     public void Notify_OnGameOver() => OnGameOver?.Invoke();
     public event Action OnGameStart;
     public void Notify_OnGameStart() => OnGameStart?.Invoke();
+    //public event Action OnGameStart;
+    //public void Notify_OnGameStart() => OnGameStart?.Invoke();
     public event Action OnDestructibleDestroyed;
     public void Notify_OnDestructibleDestroyed() => OnDestructibleDestroyed?.Invoke();
 }

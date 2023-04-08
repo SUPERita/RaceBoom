@@ -31,7 +31,7 @@ public class ShopItem : MonoBehaviour
         return this;
     }
     public ShopItem SetOpen(bool _arg) {
-        closedImage.enabled = !_arg;
+        closedImage.gameObject.SetActive(!_arg);
         //GetComponent<Button>().interactable = _arg;
         itemPrice.enabled = !_arg;
         return this;

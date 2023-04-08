@@ -28,6 +28,20 @@ public class MenuManager : SerializedMonoBehaviour
         OpenStartMenus();
 
         GetComponentInChildren<SettingsPanel>(true).LoadPrefs();
+        ShowStartAd();
+    }
+    private void ShowStartAd()
+    {
+        //do it until it works
+        if (!AdsManager.instance.ShowBannerAd())
+        {
+            //didnt work trying again
+            Debug.Log("//didnt work trying again");
+            Invoke(nameof(ShowStartAd), .1f);
+        } else
+        {
+            Debug.Log("//worked");
+        }
     }
 
     private void OpenStartMenus()

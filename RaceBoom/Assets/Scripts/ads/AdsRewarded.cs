@@ -19,10 +19,18 @@ public class AdsRewarded : MonoBehaviour, IUnityAdsListener
         Advertisement.Initialize(gameId, testMode);     // Initialize the Ads listener and service:
     }
 
-    public void ShowRewardedVideo() //Shows The add when this method is called - 
+    public bool ShowRewardedVideo() //Shows The add when this method is called - 
     {   // Check if UnityAds ready before calling Show method:
-        if (Advertisement.IsReady(mySurfacingId)) Advertisement.Show(mySurfacingId);
-        else Debug.Log("Rewarded video is not ready at the moment! Please try again later!");
+        if (Advertisement.IsReady(mySurfacingId))
+        {
+            Advertisement.Show(mySurfacingId);
+            return true;
+        }
+        else
+        {
+            Debug.Log("Rewarded video is not ready at the moment! Please try again later!");
+            return false;
+        }
     }
     public void OnUnityAdsDidFinish(string surfacingId, ShowResult showResult) // Implement IUnityAdsListener interface methods:
     {

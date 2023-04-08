@@ -17,13 +17,18 @@ public class AdsSkippable : MonoBehaviour
     {
         Advertisement.Initialize(gameId, testMode); //Prepares Everything Immediately
     }
-    public void ShowInterstitialAd()
+    public bool ShowInterstitialAd()
     {
         if (Advertisement.IsReady()) // Check if UnityAds ready before calling Show method:
         {
             Advertisement.Show(mySurfacingId);
             print("You're watching an AD!!!");
+            return true;
         }
-        else print("Interstitial ad not ready at the moment! Please try again later!");
+        else
+        {
+            print("Interstitial ad not ready at the moment! Please try again later!");
+            return false;
+        }
     }
 }

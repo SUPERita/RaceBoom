@@ -21,14 +21,16 @@ public class AdsBanner : MonoBehaviour
         Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER); //Positions Banner where you want -
     }
 
-    public void ShowBannerAd()
+    public bool ShowBannerAd()
     {
         if (Advertisement.isInitialized)
         {
             Advertisement.Banner.Show(mySurfacingId);
+            return true;
         } else
         {
             Debug.Log("!Advertisement.isInitialized");
+            return false;
         }
     }
     /*

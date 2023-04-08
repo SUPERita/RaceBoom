@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2504473603122746721
 RectTransform:
   m_ObjectHideFlags: 0
@@ -282,6 +282,7 @@ GameObject:
   - component: {fileID: 2504473603911989647}
   - component: {fileID: 2504473603911989646}
   - component: {fileID: 2504473603911989745}
+  - component: {fileID: 3714784747678977796}
   m_Layer: 0
   m_Name: AdsManager
   m_TagString: Untagged
@@ -377,7 +378,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2504473603911989744}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa6983bfd97880242813c4af13409e6d, type: 3}
   m_Name: 
@@ -392,7 +393,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2504473603911989744}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d9cd9aa2a09dbb409e01a6dc289d605, type: 3}
   m_Name: 
@@ -415,3 +416,18 @@ MonoBehaviour:
   gameId: 5210055
   mySurfacingId: android_interstitial_1
   testMode: 1
+--- !u!114 &3714784747678977796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2504473603911989744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4850b52f6f0e5724e82b2f3d4da8f20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bannerAd: {fileID: 0}
+  interstitialAd: {fileID: 0}
+  rewardedAd: {fileID: 0}
