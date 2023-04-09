@@ -28,17 +28,31 @@ public class MenuManager : SerializedMonoBehaviour
         OpenStartMenus();
 
         GetComponentInChildren<SettingsPanel>(true).LoadPrefs();
-        ShowStartAd();
+        
     }
-    private void ShowStartAd()
+    private void ShowAdSkippable()
     {
         //do it until it works
-        if (!AdsManager.instance.ShowBannerAd())
+        if (!AdsManager.instance.ShowInterstitialAd())
         {
             //didnt work trying again
             Debug.Log("//didnt work trying again");
-            Invoke(nameof(ShowStartAd), .1f);
+            Invoke(nameof(ShowAdSkippable), .2f);
         } else
+        {
+            Debug.Log("//worked");
+        }
+    }
+    private void ShowAdRewarded()
+    {
+        //do it until it works
+        if (!AdsManager.instance.ShowRewardedAd())
+        {
+            //didnt work trying again
+            Debug.Log("//didnt work trying again");
+            Invoke(nameof(ShowAdRewarded), .2f);
+        }
+        else
         {
             Debug.Log("//worked");
         }
@@ -117,8 +131,11 @@ public class MenuManager : SerializedMonoBehaviour
     private void GameEventManager_OnGameOver()
     {
         CloseAllMenus();
-        OpenMenu("GameOver");
+        Invoke(nameof(Delayed_OpenGameOver), 2f);
+        Invoke(nameof(ShowAdSkippable), 2f);
+        //ShowAd();
     }
+    private void Delayed_OpenGameOver() => OpenMenu("GameOver");
     public void Button_Continue()
     {
         CloseAllMenus();
@@ -128,6 +145,10 @@ public class MenuManager : SerializedMonoBehaviour
         DOTween.Clear(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
+    }
+    public void Button_ShowRewardedAd()
+    {
+        ShowAdRewarded();
     }
     public void Button_Start()
     {

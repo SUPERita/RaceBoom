@@ -37,6 +37,8 @@ public class AdsRewarded : MonoBehaviour, IUnityAdsListener
         if (showResult == ShowResult.Finished)
         {
             print("The Ad finished!!!");
+            ResourceManager.AddCoins(1000);
+            MessageManager.instance.SendMessage("+1000!");
         }
         else if (showResult == ShowResult.Skipped)
         {
@@ -59,11 +61,10 @@ public class AdsRewarded : MonoBehaviour, IUnityAdsListener
     {
         print("this is extra");
     }
-    /*
-    public void OnDestro() 
+
+    public void OnDestroy() 
     {
         print("The object your Ad's were attached to has BEEN DESTROYED");
         Advertisement.RemoveListener(this);
     }
-    */
 }

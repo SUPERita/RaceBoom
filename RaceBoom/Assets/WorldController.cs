@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class WorldController : MonoBehaviour
 {
@@ -39,7 +40,10 @@ public class WorldController : MonoBehaviour
         gameEventManager.OnGameStart += GameEventManager_OnGameStart;
 
         SetViewEnabaled(false);
+        RenderSettings.fogColor = CurrentWorld().worldColor;
+        
     }
+
 
     private void GameEventManager_OnGameStart()
     {
@@ -48,7 +52,7 @@ public class WorldController : MonoBehaviour
 
     private void GameEventManager_OnGameOver()
     {
-        SetViewEnabaled(false);
+        //SetViewEnabaled(false);
     }
     private void SetViewEnabaled(bool _arg)
     {
@@ -98,6 +102,18 @@ public class WorldController : MonoBehaviour
         Debug.Log("next");
         currentWorld++;
         SetCurrentWorldSave(currentWorld);
+
+        FadeFogColor(CurrentWorld().worldColor);
+        MessageManager.instance.SendMessage("WORLD PASSED!");
+    }
+    private float FogColorDur = 1f;
+    private void FadeFogColor(Color _new)
+    {
+        Color currentFogColor = RenderSettings.fogColor;
+        DOTween.To(() => currentFogColor, x => {
+            currentFogColor = x;
+            RenderSettings.fogColor = currentFogColor;
+        }, _new, FogColorDur);
     }
 
 
