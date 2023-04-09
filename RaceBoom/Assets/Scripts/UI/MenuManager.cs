@@ -11,6 +11,7 @@ public class MenuManager : SerializedMonoBehaviour
     [SerializeField] private Dictionary<string, CanvasGroup> menus = new Dictionary<string, CanvasGroup>();
     [SerializeField] private GameEventManager gameEventManager = null;
     [SerializeField] private float fadeSpeed = 0.1f;
+    [SerializeField] private GameObject[] hideOnGameStart = null;
     private void OnDisable()
     {
         gameEventManager.OnGameOver -= GameEventManager_OnGameOver;
@@ -127,6 +128,11 @@ public class MenuManager : SerializedMonoBehaviour
     {
         CloseAllMenus();
         OpenMenu("Controlls");
+
+        foreach(GameObject _g in hideOnGameStart)
+        {
+            _g.SetActive(false);
+        }
     }
     private void GameEventManager_OnGameOver()
     {

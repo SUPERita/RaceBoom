@@ -10,10 +10,14 @@ public class MenuController : SerializedMonoBehaviour
 
     [SerializeField] private Dictionary<string, CanvasGroup> menus = new Dictionary<string, CanvasGroup>();
     [SerializeField] private float fadeSpeed = 0.1f;
+    string currentMenuName = "empty";
 
     private void Start()
     {
-        OpenMenu("hats");
+        if(currentMenuName == "empty")
+        {
+            OpenMenu("hats");
+        }
     }
 
     public void CloseAllMenus()
@@ -28,6 +32,7 @@ public class MenuController : SerializedMonoBehaviour
     }
     public void OpenMenu(string _arg)
     {
+        //Debug.Log("called oprn menu with " + _arg);
         CloseAllMenus();
         CanvasGroup _k = null;
         menus.TryGetValue(_arg, out _k);
@@ -36,6 +41,8 @@ public class MenuController : SerializedMonoBehaviour
             _k.gameObject.SetActive(true);
 
         });
+
+        currentMenuName = _arg;
     }
     public void CloseMenu(string _arg)
     {

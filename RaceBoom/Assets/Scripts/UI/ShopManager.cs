@@ -7,7 +7,7 @@ using System;
 
 public class ShopManager : MonoBehaviour
 {
-
+    //ShopName used for saving
     [SerializeField] private string ShopName = "noName";
     [SerializeField] private GameObject buttonPrefab;
     [SerializeField] private ShopItemData[] items = null;

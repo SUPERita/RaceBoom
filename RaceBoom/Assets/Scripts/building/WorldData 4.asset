@@ -25,4 +25,4 @@ MonoBehaviour:
   - {fileID: 1945995939656254800, guid: 989f9144dc6a89a43bfaaa9f4b34533f, type: 3}
   <worldStart>k__BackingField: 500
   <worldEnd>k__BackingField: 2500
-  <worldColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <worldColor>k__BackingField: {r: 0.26593092, g: 0.5283019, b: 0.24207903, a: 1}
