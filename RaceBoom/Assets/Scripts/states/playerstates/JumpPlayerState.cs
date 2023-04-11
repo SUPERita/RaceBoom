@@ -9,7 +9,7 @@ public class JumpPlayerState : PlayerState
     public override void OnEnter(GameObject _g)
     {
         base.OnEnter(_g);
-        SoundPool.instance.PlaySound("clip1");
+        //SoundPool.instance.PlaySound("clip1");
        
     }
     public override void OnExit()

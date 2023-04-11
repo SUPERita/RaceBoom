@@ -11,6 +11,7 @@ public class IAPShopManager : MonoBehaviour
             case "10k_coins":
                 ResourceManager.AddCoins(10000);
                 MessageManager.instance.SendMessage("+10,000!");
+                SoundPool.instance.PlaySound("item_unlocked");
                 break;
             default:
                 Debug.Log($"no Button_OnBuy action set for {_product.definition.id}");

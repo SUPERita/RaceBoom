@@ -14,13 +14,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float initialDelay = 1f;
     [SerializeField] private float spawnChance = 100f;
     private CancellationTokenSource cancellationTokenSource;
+    private bool inKickRange = false;
+    [SerializeField] private Destructible destructible = null;
 
+    private void OnDisable()
+    {
+        destructible.OnDestructNotify -= Destructible_OnDestructNotify;
+        cancellationTokenSource.Cancel();
+    }
     private void Awake()
     {
         anim = GetComponent<Animator>();
     }
     private void Start()
     {
+        //Debug.Log("!1");
+        destructible.OnDestructNotify += Destructible_OnDestructNotify;
         cancellationTokenSource = new CancellationTokenSource();
         StartStateControl();
 
@@ -28,6 +37,14 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Destructible_OnDestructNotify()
+    {
+        inKickRange = true;
+        //Debug.Log("!3");
+        //transform.localScale = transform.localScale / 2f;
+        Destroy(_lastProj);
     }
 
     private async void StartStateControl()
@@ -63,15 +80,13 @@ public class Enemy : MonoBehaviour
         await Task.Delay((int)(secondsToWait * 1000f));
     }
 
+    GameObject _lastProj = null;
     public void Anim_Shoot()
     {
-        Instantiate(proj, shotPoint.position, shotPoint.rotation);
+        if (inKickRange) { return; }
+        _lastProj = Instantiate(proj, shotPoint.position, shotPoint.rotation);
     }
 
-    private void OnDisable()
-    {
-        cancellationTokenSource.Cancel();
-    }
 
     /// <summary>
     /// 0%-100% in precentages

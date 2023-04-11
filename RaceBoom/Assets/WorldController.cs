@@ -102,6 +102,8 @@ public class WorldController : MonoBehaviour
         Debug.Log("next");
         currentWorld++;
         SetCurrentWorldSave(currentWorld);
+        SoundPool.instance.PlaySound("world_pass");
+        
 
         FadeFogColor(CurrentWorld().worldColor);
         MessageManager.instance.SendMessage("WORLD PASSED!");

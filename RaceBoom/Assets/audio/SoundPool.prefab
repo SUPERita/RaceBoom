@@ -46,20 +46,112 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   samplePoolSound: {fileID: 263508081199141904, guid: 40852b1a7534b3747a6c85fa227c0eba, type: 3}
   startingPoolObjects: 20
-  UIClips: []
+  UIClips:
+  - _name: msg_in
+    clip: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
+    _volume: 0.1
+    _pitch: 1
+  - _name: btn_down
+    clip: {fileID: 8300000, guid: 29bde6326b4c34ad8a12da475f79b50a, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: btn_up
+    clip: {fileID: 8300000, guid: 881e3f52c86c94f26a60718d35627cd8, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: world_pass
+    clip: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: broke_record
+    clip: {fileID: 8300000, guid: 7bd6b897eb5ca4b7d88a205c4a51640c, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: item_unlocked
+    clip: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: item_locked
+    clip: {fileID: 8300000, guid: 130a177e727814a2ea78a886ab72213d, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: item_equip
+    clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: item_focus
+    clip: {fileID: 8300000, guid: b43d102aac6b145468dcaa94a5cccae1, type: 3}
+    _volume: 0.2
+    _pitch: 1
   PlayerClips:
   - _name: clip1
     clip: {fileID: 8300000, guid: bf60a5a9bd0c94cf4bb1d130d81a8ed7, type: 3}
     _volume: 0.5
+    _pitch: 1
+  - _name: whoosh1
+    clip: {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
+    _volume: 0.5
+    _pitch: 0.9
+  - _name: whoosh2
+    clip: {fileID: 8300000, guid: d46323e22e74e46baa241cbf48c85671, type: 3}
+    _volume: 0.5
+    _pitch: 0.9
+  - _name: player_death
+    clip: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: player_land
+    clip: {fileID: 8300000, guid: 7bef0064f8567430cac22499c6b93d4f, type: 3}
+    _volume: 0.25
+    _pitch: 2
   EnemiesClips:
   - _name: break
     clip: {fileID: 8300000, guid: f75b9add6a48347fdb4beca72e9dba09, type: 3}
     _volume: 0.5
+    _pitch: 0.9
+  - _name: enemy_hit
+    clip: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+    _volume: 1
+    _pitch: 1.5
   themes:
   - _name: theme1
-    clip: {fileID: 8300000, guid: 41fd71f81aca44a06ad9aeb50fc970df, type: 3}
+    clip: {fileID: 8300000, guid: 5f084be105545468899b137f46071c6c, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: theme2
+    clip: {fileID: 8300000, guid: 81b1552a888064dc3b54aa5de72d8d53, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: theme3
+    clip: {fileID: 8300000, guid: ebd3351eed28341d9a07b45a929ceea3, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: theme4
+    clip: {fileID: 8300000, guid: e8df899ba9465421b8f8bc7076d56586, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: theme5
+    clip: {fileID: 8300000, guid: d0dfdf5cd372943b2a58c6438d9622e3, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: theme6
+    clip: {fileID: 8300000, guid: 1aa11e44a96bc4e84b0f962d299774f0, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: theme7
+    clip: {fileID: 8300000, guid: bad3c0bcce37b4422b76fedbbec133bb, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: theme8
+    clip: {fileID: 8300000, guid: 18e01a7ec88254c88b062418743f7b64, type: 3}
+    _volume: 0.5
+    _pitch: 1
+  - _name: shop
+    clip: {fileID: 8300000, guid: a642c6e348c7042af856b5690d28c0b2, type: 3}
     _volume: 1
-  nonRandomThemes: []
+    _pitch: 1
+  nonRandomThemes:
+  - shop
   themeSource: {fileID: 2829149968213279807}
 --- !u!1001 &2404271340418821312
 PrefabInstance:
@@ -115,6 +207,10 @@ PrefabInstance:
     - target: {fileID: 263508081199141911, guid: 40852b1a7534b3747a6c85fa227c0eba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 440957916988172543, guid: 40852b1a7534b3747a6c85fa227c0eba, type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 440957916988172543, guid: 40852b1a7534b3747a6c85fa227c0eba, type: 3}
       propertyPath: OutputAudioMixerGroup

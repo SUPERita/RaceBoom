@@ -648,6 +648,7 @@ GameObject:
   - component: {fileID: 3139279280914489289}
   - component: {fileID: 3893430599044770476}
   - component: {fileID: 6385178807920164593}
+  - component: {fileID: 253441252355750263}
   m_Layer: 5
   m_Name: IAP shop item
   m_TagString: Untagged
@@ -782,6 +783,18 @@ MonoBehaviour:
   titleText: {fileID: 0}
   descriptionText: {fileID: 0}
   priceText: {fileID: 6266412490359475590}
+--- !u!114 &253441252355750263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3139279280914489295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3139279281610744974
 GameObject:
   m_ObjectHideFlags: 0

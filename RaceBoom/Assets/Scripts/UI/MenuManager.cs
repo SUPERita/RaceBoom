@@ -29,7 +29,9 @@ public class MenuManager : SerializedMonoBehaviour
         OpenStartMenus();
 
         GetComponentInChildren<SettingsPanel>(true).LoadPrefs();
-        
+
+        SoundPool.instance.PlayTheme("shop");
+
     }
     private void ShowAdSkippable()
     {
@@ -159,12 +161,12 @@ public class MenuManager : SerializedMonoBehaviour
     public void Button_Start()
     {
         gameEventManager.Notify_OnGameStart();
+        SoundPool.instance.PlayRandomTheme();
     }
     public void Button_Shop()
     {
         CloseAllMenus();
         OpenMenu("Shop");
-
     }
     public void Button_ShopReturn()
     {

@@ -23,6 +23,7 @@ public class MessageManager : MonoBehaviour
     
     public void SendMessage(string _arg)
     {
+        SoundPool.instance.PlaySound("msg_in");
         GameObject g = Instantiate(messagePrefab, spawnPoint);
 
         //set msg text

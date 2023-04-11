@@ -24,4 +24,12 @@ public class Projectile : MonoBehaviour
        
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.TryGetComponent(out PlayerMovement _p))
+        {
+            _p.NotifyColliderWithPlayer();
+        }
+    }
+
 }

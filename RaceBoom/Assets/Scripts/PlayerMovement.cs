@@ -65,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] private Vector3 moveDirection = Vector3.forward;
     private bool inputLock = false;
     private bool isGrounded = true;
+    private bool wasGroundedLastFrame = true;
     private bool isAlive = true;
 
     [Button]
@@ -84,6 +85,10 @@ public class PlayerMovement : MonoBehaviour
 
     [FoldoutGroup("VFX")]
     [SerializeField] private MMF_Player KickFeedback = null;
+    [FoldoutGroup("VFX")]
+    [SerializeField] private GameObject dropFeedback = null;
+    [FoldoutGroup("VFX")]
+    [SerializeField] private MMF_Player deathFeedback = null;
     //[AssetList(Path = "Assets/Scripts/states/playerstates", AutoPopulate = true)]
     [SerializeField] private PlayerState[] states = null;
     private PlayerState currentState = null;
@@ -117,6 +122,9 @@ public class PlayerMovement : MonoBehaviour
 
         //update score
         highscoreDisplay.UpdateDisplay(transform.position.z*2f);
+
+        //just also do it
+        wasGroundedLastFrame = isGrounded;
     }
 
     private bool rollRequest = false;
@@ -130,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
             else { currentLane--; }
             currentLane = Mathf.Clamp(currentLane, -1, 1);
 
+            SoundPool.instance.PlaySound("whoosh1", .1f);
             //Debug.Log(currentLane * moveDistance + " -- " + moveDur);
             //StartCoroutine(SlideTo(currentLane * moveDistance));
             transform.DOMoveX(/*transform.position.x + (Mathf.Sign(joystick.Horizontal))*/currentLane *5,slideSpeed).SetEase(Ease.OutCubic);
@@ -142,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 _velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
                 inputLock = true;
+                SoundPool.instance.PlaySound("whoosh2", .2f);
             }
             //drop
             else if (joystick.Vertical < 0 && !isGrounded && !currentState.blocksRolling)
@@ -149,9 +159,14 @@ public class PlayerMovement : MonoBehaviour
                 _velocity.y = gravity;
                 inputLock = true;
                 rollRequest = true;
+                SoundPool.instance.PlaySound("whoosh1", .2f);
             } else if (joystick.Vertical < 0 && isGrounded && !currentState.blocksRolling)
             {
-                SetState("Roll");
+                if(currentState.stateName != "Roll")
+                {
+                    SetState("Roll");
+                    SoundPool.instance.PlaySound("whoosh2", .2f);
+                }
             }
         }
 
@@ -163,6 +178,13 @@ public class PlayerMovement : MonoBehaviour
         if (_velocity.y < 0 && !isGrounded) { SetState("Fall"); }
         //
         if(currentState.stateName == "Jump" && _velocity.y < 0 && !isGrounded) { SetState("Fall", true); }
+
+        if(isGrounded && !wasGroundedLastFrame)
+        {
+            SoundPool.instance.PlaySound("player_land", .2f);
+            Instantiate(dropFeedback, transform.position, transform.rotation);
+        }
+        
     }
     private Vector3 _velocity = Vector3.zero;
     public void Gravity()
@@ -198,7 +220,9 @@ public class PlayerMovement : MonoBehaviour
     }
     */
     private void PlayerDie()
-    { 
+    {
+        deathFeedback?.PlayFeedbacks();
+        SoundPool.instance.PlaySound("player_death");
         transform.DOKill();
         //controller.enabled = false;
         isAlive = false;
@@ -223,7 +247,9 @@ public class PlayerMovement : MonoBehaviour
     {
         SetState("Attack" + UnityEngine.Random.Range(1, 4));
         destructiblesInCheck.Add(obj);
+        obj.Notify_ToDistruct();
         transform.DOMove(destructiblesInCheck[0].transform.position + attackCorrectionSlide, attackCorrectionDur);
+        SoundPool.instance.ExantuateTheme();
     }
     private List<Destructible> destructiblesInCheck = new List<Destructible>();
     public void Anim_DestroyDestructiblesInTrigger()
@@ -232,7 +258,7 @@ public class PlayerMovement : MonoBehaviour
         {
             gameEventManager.Notify_OnDestructibleDestroyed();
             KickFeedback?.PlayFeedbacks();
-            SoundPool.instance.PlaySound("break");
+            
             
         }
         foreach (Destructible _d in destructiblesInCheck)
@@ -249,14 +275,21 @@ public class PlayerMovement : MonoBehaviour
         RestartPlayer();
     }
 
+    
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (!isAlive) { return; }
         //Debug.Log("one");
         if (hit.collider.gameObject.CompareTag("Obstacle"))
         {
             //Debug.Log("one2" +   hit.collider.gameObject.name);
             PlayerDie();
         }
+    }
+    public void NotifyColliderWithPlayer()
+    {
+        if (!isAlive) { return; }
+        PlayerDie();
     }
 
     

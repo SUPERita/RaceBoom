@@ -60,6 +60,7 @@ public class HighscoreDisplay : MonoBehaviour
         if(highscoreCanBeBroken && _score > tmpHighScore)
         {
             MessageManager.instance.SendMessage("RECORD BROKE!!!");
+            SoundPool.instance.PlaySound("broke_record");
             highscoreCanBeBroken = false;
         }
 

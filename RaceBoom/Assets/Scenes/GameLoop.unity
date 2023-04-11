@@ -873,6 +873,7 @@ GameObject:
   - component: {fileID: 146323117}
   - component: {fileID: 146323116}
   - component: {fileID: 146323115}
+  - component: {fileID: 146323118}
   m_Layer: 5
   m_Name: Settings Button
   m_TagString: Untagged
@@ -994,6 +995,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146323113}
   m_CullTransparentMesh: 1
+--- !u!114 &146323118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146323113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1 &147402435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 147402437}
   - component: {fileID: 147402436}
+  - component: {fileID: 147402438}
   m_Layer: 5
   m_Name: music Slider
   m_TagString: Untagged
@@ -1085,6 +1101,20 @@ RectTransform:
   m_AnchoredPosition: {x: 18.699951, y: 154.25}
   m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &147402438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147402435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1001 &241244424
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1171,6 +1201,7 @@ GameObject:
   - component: {fileID: 290267040}
   - component: {fileID: 290267039}
   - component: {fileID: 290267038}
+  - component: {fileID: 290267041}
   m_Layer: 5
   m_Name: skins Button
   m_TagString: Untagged
@@ -1292,6 +1323,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290267036}
   m_CullTransparentMesh: 1
+--- !u!114 &290267041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290267036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!4 &290541853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4340330282522542, guid: 43cecf02ca9a29341aa80150e36f4c3d, type: 3}
@@ -2881,6 +2926,7 @@ GameObject:
   - component: {fileID: 581342921}
   - component: {fileID: 581342920}
   - component: {fileID: 581342919}
+  - component: {fileID: 581342922}
   m_Layer: 5
   m_Name: Start Button
   m_TagString: Untagged
@@ -3002,6 +3048,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 581342917}
   m_CullTransparentMesh: 1
+--- !u!114 &581342922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 581342917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1 &601199850
 GameObject:
   m_ObjectHideFlags: 0
@@ -3537,9 +3597,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '999,999,999
-
-'
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4519,6 +4577,7 @@ GameObject:
   - component: {fileID: 1021757377}
   - component: {fileID: 1021757376}
   - component: {fileID: 1021757375}
+  - component: {fileID: 1021757378}
   m_Layer: 5
   m_Name: coins button
   m_TagString: Untagged
@@ -4640,6 +4699,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021757373}
   m_CullTransparentMesh: 1
+--- !u!114 &1021757378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021757373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1001 &1032714758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5877,6 +5950,7 @@ GameObject:
   - component: {fileID: 1251471057}
   - component: {fileID: 1251471056}
   - component: {fileID: 1251471055}
+  - component: {fileID: 1251471054}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -5903,6 +5977,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1251471054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251471052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!114 &1251471055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6150,8 +6238,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1294448549}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!222 &1294448553
 CanvasRenderer:
@@ -6775,8 +6863,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1367536776}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!222 &1367536780
 CanvasRenderer:
@@ -8222,6 +8310,7 @@ GameObject:
   - component: {fileID: 1562146557}
   - component: {fileID: 1562146556}
   - component: {fileID: 1562146555}
+  - component: {fileID: 1562146558}
   m_Layer: 5
   m_Name: Return Button
   m_TagString: Untagged
@@ -8343,6 +8432,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562146553}
   m_CullTransparentMesh: 1
+--- !u!114 &1562146558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562146553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1 &1572974300
 GameObject:
   m_ObjectHideFlags: 0
@@ -9782,6 +9885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1762552831}
   - component: {fileID: 1762552830}
+  - component: {fileID: 1762552832}
   m_Layer: 5
   m_Name: sfx Slider
   m_TagString: Untagged
@@ -9863,6 +9967,20 @@ RectTransform:
   m_AnchoredPosition: {x: 18.699951, y: 256.25}
   m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &1762552832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762552829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1 &1766061216
 GameObject:
   m_ObjectHideFlags: 0
@@ -10032,6 +10150,7 @@ GameObject:
   - component: {fileID: 1776228709}
   - component: {fileID: 1776228708}
   - component: {fileID: 1776228713}
+  - component: {fileID: 1776228714}
   m_Layer: 5
   m_Name: btn reward ad
   m_TagString: Untagged
@@ -10218,6 +10337,20 @@ MonoBehaviour:
   rotationAmount: 45
   rotationDuration: 1
   rotationLoopType: 1
+--- !u!114 &1776228714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1776228706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1 &1808535187
 GameObject:
   m_ObjectHideFlags: 0
@@ -10255,6 +10388,7 @@ Transform:
   - {fileID: 1204724386}
   - {fileID: 4510079999598862}
   - {fileID: 1389263279}
+  - {fileID: 1952463277}
   - {fileID: 468566667047744789}
   - {fileID: 484297416}
   m_Father: {fileID: 0}
@@ -10297,6 +10431,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 1376983519}
   highscoreDisplay: {fileID: 1294448551}
   KickFeedback: {fileID: 1389263280}
+  dropFeedback: {fileID: 3432958286849152088, guid: 87ee7299dd44ed747af24dbb91bcd33b, type: 3}
+  deathFeedback: {fileID: 1952463278}
   states:
   - {fileID: 11400000, guid: b395ffe0e40a82c40a0c35409a5713c6, type: 2}
   - {fileID: 11400000, guid: 22ea22f0b09cd694d991c03149604283, type: 2}
@@ -10661,6 +10797,7 @@ GameObject:
   - component: {fileID: 1856895910}
   - component: {fileID: 1856895909}
   - component: {fileID: 1856895908}
+  - component: {fileID: 1856895911}
   m_Layer: 5
   m_Name: return
   m_TagString: Untagged
@@ -10782,6 +10919,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856895906}
   m_CullTransparentMesh: 1
+--- !u!114 &1856895911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856895906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1 &1857700564
 GameObject:
   m_ObjectHideFlags: 0
@@ -10887,7 +11038,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2066896392038131574, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2066896392038131574, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11161,6 +11312,475 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1952463276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1952463277}
+  - component: {fileID: 1952463278}
+  m_Layer: 0
+  m_Name: deathFeedback
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1952463277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952463276}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1808535188}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1952463278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952463276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Feedbacks: []
+  InitializationMode: 2
+  SafeMode: 3
+  Direction: 0
+  AutoChangeDirectionOnEnd: 0
+  AutoPlayOnStart: 0
+  AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
+  DurationMultiplier: 1
+  DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
+  CooldownDuration: 0
+  InitialDelay: 0
+  CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
+  FeedbacksIntensity: 1
+  Events:
+    TriggerMMFeedbacksEvents: 0
+    TriggerUnityEvents: 1
+    OnPlay:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPause:
+      m_PersistentCalls:
+        m_Calls: []
+    OnResume:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRevert:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+  DebugActive: 0
+  FeedbacksList:
+  - id: 0
+  - id: 1
+  - id: 2
+  - id: 3
+  - id: 4
+  - id: 5
+  KeepPlayModeChanges: 0
+  PerformanceMode: 0
+  ForceStopFeedbacksOnDisable: 1
+  references:
+    version: 1
+    00000000:
+      type: {class: MMF_ParticlesInstantiation, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
+      data:
+        Active: 0
+        UniqueID: -287795730
+        Label: Particles Instantiation
+        Channel: 0
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0.2
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        Owner: {fileID: 1952463278}
+        DebugActive: 0
+        Mode: 1
+        CachedRecycle: 1
+        ParticlesPrefab: {fileID: 535799961814499386, guid: 0d8bcf78605ea774791316ab7150dbfb, type: 3}
+        RandomParticlePrefabs: []
+        ForceSetActiveOnPlay: 0
+        PositionMode: 0
+        InstantiateParticlesPosition: {fileID: 0}
+        TargetWorldPosition: {x: 0, y: 0, z: 0}
+        Offset: {x: 0, y: 0, z: 3}
+        NestParticles: 1
+        ApplyRotation: 0
+        ApplyScale: 0
+    00000001:
+      type: {class: MMF_CinemachineImpulse, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.Cinemachine}
+      data:
+        Active: 1
+        UniqueID: 32005342
+        Label: Cinemachine Impulse
+        Channel: 0
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        Owner: {fileID: 1952463278}
+        DebugActive: 0
+        m_ImpulseDefinition:
+          m_ImpulseChannel: 1
+          m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+          m_AmplitudeGain: 2
+          m_FrequencyGain: 0.5
+          m_RepeatMode: 0
+          m_Randomize: 1
+          m_TimeEnvelope:
+            m_AttackShape:
+              serializedVersion: 2
+              m_Curve: []
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            m_DecayShape:
+              serializedVersion: 2
+              m_Curve: []
+              m_PreInfinity: 2
+              m_PostInfinity: 2
+              m_RotationOrder: 4
+            m_AttackTime: 0
+            m_SustainTime: 0
+            m_DecayTime: 0.15
+            m_ScaleWithImpact: 1
+            m_HoldForever: 0
+          m_ImpactRadius: 100
+          m_DirectionMode: 0
+          m_DissipationMode: 2
+          m_DissipationDistance: 1000
+          m_PropagationSpeed: 343
+        Velocity: {x: 5, y: 5, z: 5}
+        ClearImpulseOnStop: 0
+    00000002:
+      type: {class: MMF_NVEmphasis, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.NiceVibrations}
+      data:
+        Active: 1
+        UniqueID: -1335470382
+        Label: Haptic Emphasis
+        Channel: 0
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        Owner: {fileID: 1952463278}
+        DebugActive: 0
+        MinAmplitude: 1
+        MaxAmplitude: 1
+        MinFrequency: 1
+        MaxFrequency: 1
+        HapticSettings:
+          ForceGamepadID: 0
+          GamepadID: 0
+          OnlyPlayIfHapticsSupported: 1
+          OnlyPlayIfAdvancedRequirementsMet: 0
+          OnlyPlayIfAmplitudeModulationSupported: 0
+          OnlyPlayIfFrequencyModulationSupported: 0
+    00000003:
+      type: {class: MMF_LensDistortion_URP, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.URP}
+      data:
+        Active: 1
+        UniqueID: 737814017
+        Label: Lens Distortion URP
+        Channel: 0
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        Owner: {fileID: 1952463278}
+        DebugActive: 0
+        Duration: 1
+        ResetShakerValuesAfterShake: 1
+        ResetTargetValuesAfterShake: 1
+        RelativeIntensity: 0
+        Intensity:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.12031555
+            value: 0.9772072
+            inSlope: -5.796273
+            outSlope: -5.796273
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.75087655
+            outWeight: 0.060776036
+          - serializedVersion: 3
+            time: 0.2936639
+            value: -0.995021
+            inSlope: -0.18431078
+            outSlope: -0.18431078
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.8553311
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.8476646
+            value: -0.12225157
+            inSlope: -1.2250203
+            outSlope: -1.2250203
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0.28468165
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: -0.48234868
+            outSlope: -0.48234868
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.19028641
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapIntensityZero: 0
+        RemapIntensityOne: 0.5
+    00000004:
+      type: {class: MMF_TimescaleModifier, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
+      data:
+        Active: 1
+        UniqueID: -738497379
+        Label: Timescale Modifier
+        Channel: 0
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0.1
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        Owner: {fileID: 1952463278}
+        DebugActive: 0
+        Mode: 0
+        TimeScale: 0.075
+        TimeScaleDuration: 0.25
+        TimeScaleLerp: 0
+        TimeScaleLerpSpeed: 1
+        ResetTimescaleOnStop: 0
+    00000005:
+      type: {class: MMF_Bloom_URP, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.URP}
+      data:
+        Active: 1
+        UniqueID: -1913315871
+        Label: Bloom URP
+        Channel: 0
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        Owner: {fileID: 1952463278}
+        DebugActive: 0
+        ShakeDuration: 0.5
+        ResetShakerValuesAfterShake: 1
+        ResetTargetValuesAfterShake: 1
+        RelativeValues: 1
+        ShakeIntensity:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.11364746
+            value: 0.9606056
+            inSlope: -4.3400354
+            outSlope: -4.3400354
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.75087655
+            outWeight: 0.06415991
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: -0.48234868
+            outSlope: -0.48234868
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0.19028641
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapIntensityZero: 0
+        RemapIntensityOne: 30
+        ShakeThreshold:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 0.5
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapThresholdZero: 0
+        RemapThresholdOne: 0
 --- !u!1 &1959593265
 GameObject:
   m_ObjectHideFlags: 0
@@ -11173,6 +11793,7 @@ GameObject:
   - component: {fileID: 1959593269}
   - component: {fileID: 1959593268}
   - component: {fileID: 1959593267}
+  - component: {fileID: 1959593270}
   m_Layer: 5
   m_Name: 'hat Button '
   m_TagString: Untagged
@@ -11294,6 +11915,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959593265}
   m_CullTransparentMesh: 1
+--- !u!114 &1959593270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959593265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1 &2005440194
 GameObject:
   m_ObjectHideFlags: 0
@@ -11355,7 +11990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -11414,6 +12049,7 @@ GameObject:
   - component: {fileID: 2014443430}
   - component: {fileID: 2014443434}
   - component: {fileID: 2014443433}
+  - component: {fileID: 2014443435}
   m_Layer: 5
   m_Name: Continue Button
   m_TagString: Untagged
@@ -11575,6 +12211,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 2
+--- !u!114 &2014443435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014443428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1 &2040030454
 GameObject:
   m_ObjectHideFlags: 0
@@ -11863,9 +12513,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '999,999,999
-
-'
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12573,6 +13221,7 @@ GameObject:
   - component: {fileID: 2135956834}
   - component: {fileID: 2135956833}
   - component: {fileID: 2135956832}
+  - component: {fileID: 2135956835}
   m_Layer: 5
   m_Name: Shop Button
   m_TagString: Untagged
@@ -12694,6 +13343,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135956830}
   m_CullTransparentMesh: 1
+--- !u!114 &2135956835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135956830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f94f1596ad59d54098e2d3e52595361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  downSound: btn_down
+  upSound: btn_up
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
@@ -16790,7 +17453,7 @@ Transform:
   - {fileID: 468566667047744787}
   - {fileID: 468566667047744785}
   m_Father: {fileID: 1808535188}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &468566667047744793
 Transform:

@@ -57,8 +57,9 @@ public class ResourceManager : MonoBehaviour
     }
 
     [Button]
-    private void Editor_AddCoins(int _a)
+    private void Editor_SetCoins(int _a)
     {
+        TakeCoins(GetCoins());
         AddCoins(_a);
     }
 

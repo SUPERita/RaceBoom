@@ -65,6 +65,7 @@ public class SwipeMenu : MonoBehaviour
         if(currentlySelectedItem != _newSelected)
         {
             Debug.Log("Selected: " + transform.GetChild(_newSelected).name);
+            SoundPool.instance.PlaySound("item_focus");
         }
         currentlySelectedItem = _newSelected;
     }

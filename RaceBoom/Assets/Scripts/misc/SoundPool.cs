@@ -13,7 +13,8 @@ public struct SFX
     public AudioClip clip;
     [Tooltip("0-1")]
     public float _volume;
-
+    [Tooltip("0-2?")]
+    public float _pitch;
 }
 
 public class SoundPool : MonoBehaviour
@@ -38,6 +39,7 @@ public class SoundPool : MonoBehaviour
 
     [Header("Themes")]
     [SerializeField] private SFX[] themes = null;
+    [InfoBox("nonRandomThemes cant be randomly played with the PlayRandomTheme funtion")]
     [SerializeField] private string[] nonRandomThemes = null;
     [SerializeField] private AudioSource themeSource = null;
     private SFX currentTheme;
@@ -76,7 +78,7 @@ public class SoundPool : MonoBehaviour
             SFX _sfx = GetAudioClipByName(_clipName);
             tmpSound._source.clip = _sfx.clip;
             tmpSound._source.volume = _sfx._volume;
-            tmpSound._source.pitch = 1 + pitchVaritaion * UnityEngine.Random.Range(-1f, 1f);
+            tmpSound._source.pitch = _sfx._pitch + pitchVaritaion * UnityEngine.Random.Range(-1f, 1f);
             tmpSound._source.Play();
             tmpSound._source.loop = isLoop;
             activeSounds.Add(tmpSound);
@@ -99,12 +101,13 @@ public class SoundPool : MonoBehaviour
     [Button]
     public void PlayTheme(string _themeName)
     {
+        currentTheme = GetThemeByName(_themeName);
         if (themeSource.clip == GetThemeByName(_themeName).clip) { return; }
 
         themeSource.DOFade(0, .25f).OnComplete(() =>
         {
             themeSource.clip = GetThemeByName(_themeName).clip;
-            themeSource.DOFade(GetThemeByName(_themeName)._volume, .25f);
+            themeSource.DOFade(GetThemeByName(_themeName)._volume/2f, .25f);
             themeSource.Play();
         });
         //needs tweening
@@ -113,7 +116,6 @@ public class SoundPool : MonoBehaviour
     public void PlayRandomTheme()
     {
         string _rand = themes[UnityEngine.Random.Range(0, themes.Length)]._name;
-
         //string[] _allThemes = SFXArrToStringArr(themes);
 
         foreach(string _s in nonRandomThemes)
@@ -125,7 +127,19 @@ public class SoundPool : MonoBehaviour
             }
         }
 
+        themeSource.loop = true;
         PlayTheme(_rand);
+    }
+
+    [Button]
+    public void ExantuateTheme(float _maxPeak = 1f, float _attk = .2f, float _fall = 1f)
+    {
+        themeSource.DOKill();
+        float _startVol = currentTheme._volume;
+        themeSource.DOFade(_maxPeak, _attk)
+            .OnComplete(
+                ()=> themeSource.DOFade(_startVol/2f, _fall)
+            );
     }
 
     #region Pool Methods

@@ -2768,6 +2768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60315137cb39774ebe35be2ab9d1e37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: enemy_hit
   destroyParticles:
   - {fileID: 5880797563127281583, guid: 265d3a5ba69981a4698ceabcedf368b0, type: 3}
   hasRandomChoiceParticles: 1
@@ -2791,6 +2792,7 @@ MonoBehaviour:
   attackDelay: 0.5
   initialDelay: 1
   spawnChance: 100
+  destructible: {fileID: 8325253890864252028}
 --- !u!95 &4206805819532911244
 Animator:
   serializedVersion: 3

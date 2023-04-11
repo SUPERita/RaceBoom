@@ -45,19 +45,25 @@ public class ShopManager : MonoBehaviour
     public void OnButtonClick(ShopItem _s)
     {
         ShopItemData shopItemData = ItemToItemData(_s);
+        //if owned
         if (shopItemData.GetIsPurchesed())
         {
             SetHighlight(_s);
-            //Debug.Log("2");
+            SoundPool.instance.PlaySound("item_equip");
         }
+        //if has enougth money, buy
         else if (ResourceManager.TakeCoins(shopItemData._price))
         {
-            //buy item
-            // Debug.Log("1");
             MessageManager.instance.SendMessage("UNLOCKED: " + shopItemData._itemName + "!!!");
             _s.SetOpen(true);
             shopItemData.SetIsPurchesed(true);
             SetHighlight(_s);
+            SoundPool.instance.PlaySound("item_unlocked");
+        }
+        //too expensive
+        else
+        {
+            SoundPool.instance.PlaySound("item_locked");
         }
     }
 
